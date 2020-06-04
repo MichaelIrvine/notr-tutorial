@@ -12,6 +12,9 @@ html {
 body {
   background-color: var(--light);
   color: var(--dark);
+  transition: background-color 500ms ease-in;
+  display: grid;
+  grid-template-columns: 1.25fr 4fr;
 }
 
 /* All Dark Mode Styles Here */
@@ -38,23 +41,44 @@ body {
   outline: none;
 }
 
+.btn--delete-note {
+  width: 25%;
+  height: 25px;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.btn--delete-note:focus {
+  outline: none;
+}
+
+#delete-icon {
+  width: 25px;
+  height: 25px;
+  pointer-events: none;
+}
+
+.dark-mode #delete-icon {
+  fill: var(--light);
+}
+
 /*
 * 
 Structure Styles 
 *
 */
 
-/* Main */
-
-body {
-  display: grid;
-  grid-template-columns: 1.5fr 3fr;
-}
-
 /* Aside Content Styles */
 
 aside {
   border-right: 1px solid var(--dark);
+}
+
+.dark-mode aside {
+  border-right: 1px solid var(--light);
 }
 
 .branding {
@@ -83,14 +107,23 @@ aside {
   margin: 0.5rem 0;
   padding: 0.5rem;
   cursor: pointer;
+  display: flex;
 }
 
 .note--item:hover {
   background-color: #f7f7f7;
 }
 
-.dark-mode .notes--wrapper {
-  border-right: 1px solid var(--light);
+.note--item__text {
+  flex: 1;
+}
+
+.dark-mode .note--item:hover {
+  background-color: #616161;
+}
+
+.note--item:hover .btn--delete-note {
+  opacity: 1;
 }
 
 /* Main Content Styles */
@@ -180,6 +213,11 @@ textarea:focus {
   color: var(--light);
   padding: 0.5rem 1.5rem;
   margin-left: 0.5rem;
+}
+
+.dark-mode .form-controls .btn--main {
+  background-color: var(--light);
+  color: var(--dark);
 }
 
 /* Button Dark and Light Mode Toggle Style */
